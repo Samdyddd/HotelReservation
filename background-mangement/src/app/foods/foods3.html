@@ -1,0 +1,82 @@
+<div class="nav_menu">
+    <div style="border-radius:3px;box-shadow: 0px 1px 6px #BDC0BA;">
+        <form role="form" enctype="multipart/form-data" method="post">
+            <div class="form-group" style="padding:0;margin:0;display:inline-block;margin-left:30px;">
+                <label for="name">商品名&nbsp;</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div class="form-group" style="padding:0;margin:0;display:inline-block;margin-left:30px">
+                <label for="price">价格&nbsp;</label>
+                <input type="number" id="price" name="price">
+            </div>
+
+            <div class="form-group" style="padding:0;margin:0;display:inline-block; margin-left:30px">
+                <label for="imagefile" style="display:inline-block;">图片&nbsp;</label>
+                <input type="file" name="upload" multiple="multiple" id="imagefile" style="display:inline-block;">
+            </div>
+
+
+            <div class="form-group">
+                <label for="foodsType" class="control-label">选择类型:</label>
+                <div>
+                    <select class="form-control" id="foodsType">
+                    <option *ngFor="let ty of category;let i=index" [value]="ty?.name" name="ty?.name">{{i+1}}.{{ty.name}}</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-left:30px;">
+                <label for="content">详细描述&nbsp;</label>
+                <textarea class="form-control" rows="3" name="content"></textarea>
+            </div>
+            <button class="text-center" type="submit" class="btn btn-default" (click)="addFood()">提交</button>
+        </form>
+    </div>
+
+    <div class="foodInfo">
+        <ul>
+            <li *ngFor="let item of foodsDate">
+                <div style="width:500px;background: #f3f5f7;margin-top: 30px; height: 35px;border-left: 2px solid rgba(7, 17, 27, 0.1);">
+                    <span style="padding-left: 14px;line-height: 35px;font-size: 20px;color: rgb(147, 153, 159);display: inline-block;">{{item.typeName}}</span>
+                </div>
+
+                <ul>
+                    <li>
+                        <table class="table table-hover table-border">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>菜名</th>
+                                    <th>描述</th>
+                                    <th>价格</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let food of item.foods">
+                                <tr>
+                                    <td> <img [src]="food.image" style="margin-left:20px;width:70px;height:75px;border-top-left-radius:8px;border-bottom-left-radius:8px;">
+                                    </td>
+                                    <td>{{food.name}}</td>
+                                    <td>
+                                        <p style="width:200px;;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">{{food.info}}</p>
+                                    </td>
+                                    <td>￥{{food.price}}</td>
+                                    <td><a [routerLink]="['./customer-create']" class="btn btn-danger">修改</a><span> </span><a [routerLink]="['./customer-info']" class="btn btn-danger">详情</a><span> </span><a [routerLink]="['./customer-create']" class="btn btn-danger">删除</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+    </div>
+
+
+
+
+</div>

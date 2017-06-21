@@ -1,0 +1,44 @@
+<div class="order" style="border-radius:3px;box-shadow: 0px 1px 6px #BDC0BA;width:92%;margin:0 auto;">
+    <ul>
+        <li>
+            <ul class="ulth" style="padding:20px;">
+                <li>用户</li>
+                <li>菜色</li>
+                <li>就餐地点</li>
+                <li>消费总额</li>
+                <li>菜品评论</li>
+                <li>服务评论</li>
+                <li>建议</li>
+                <li>日期</li>
+            </ul>
+            <ul *ngFor="let item of evinfo" class="ulth hov">
+                <li *ngFor="let order of item.orderId" style="flex:4">
+                    <ul class="ulth" style="flex-wrap:wrap;">
+                        <li>
+                            {{order.userName}}
+                        </li>
+                        <li>
+                            <ul>
+                                <li *ngFor="let food of order.goods">
+                                    {{food.name}}
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            {{order.place}}
+                        </li>
+                        <li>
+                            ￥{{order.totalPrice}}
+                        </li>
+                    </ul>
+                </li>
+                <li>{{item.foodreviews}}</li>
+                <li>{{item.servicereviews}}</li>
+                <li>{{item.content}}</li>
+                <li>{{item.time|date:"y年MM月dd日HH时mm分"}}</li>
+            </ul>
+        </li>
+    </ul>
+
+
+</div>

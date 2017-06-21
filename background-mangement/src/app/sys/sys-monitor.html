@@ -1,0 +1,13 @@
+<button class="btn center-block" (click)="showsev()" style="float:left;">七天营业额</button>
+<div *ngIf="pieChart">
+    <div class="col-xs-12">
+        <echart [chartType]="pieChart" class="nf-chart"></echart>
+    </div>
+</div>
+
+<button class="btn center-block text-left" (click)="showev()" style="float:left;margin-left:10px;">七天评价趋势</button>
+<div *ngIf="lineChart">
+    <div class="col-xs-12">
+        <echart [chartType]="lineChart" class="nf-chart"></echart>
+    </div>
+</div>

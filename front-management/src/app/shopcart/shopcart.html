@@ -1,0 +1,51 @@
+<div class="shopcart">
+    <div class="content">
+        <div class="content-left">
+            <div class="cart-wrapper" (click)="showlist()">
+                <div class="cart-icon" [ngClass]="{'activebgcolor':totalprice>0}">
+                    <i class="iconfont" [ngClass]="{'activecolor':totalprice>0}">&#xe629;</i>
+                </div>
+            </div>
+            <div class="total" [ngClass]="{'activecolor':totalprice>0}" *ngIf="totalprice>0">￥{{totalprice}}</div>
+            <div class="total" *ngIf="totalprice==undefined||totalprice==null||totalprice==0">￥0</div>
+        </div>
+
+        <div class="content-right">
+            <div class="pay" [ngClass]="{'activebgcolor':totalprice>0}">
+                <span (click)="sendToOrder()" [ngClass]="{'activecolor':totalprice>0}" *ngIf="totalprice>0">去结算</span>
+                <span *ngIf="totalprice==undefined||totalprice==null||totalprice==0">空</span>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="dis&&totalprice>0" class="shopcart-list">
+        <div class="list-head">
+            <h4 class="title" style="display:inline-block;">购物车</h4>
+            <h4 class="empty" (click)="empty()" style="float:right; color: rgb(0, 160, 220)">清空</h4>
+        </div>
+        <div class="list-content">
+            <ul>
+                <li class="list-food" *ngFor="let i of foodlist.foodlist">
+                    <div *ngIf="i.count>0" style="display:flex;">
+                        <span style="font-size:18px;width:50%;">{{i?.name}}</span>
+                        <span style="flex:1;text-align:center;font-size:17px;">{{i?.price}}</span>
+
+                        <div class="rollcontrol" style="display:inline-block;flex:1;margin-top:-5px;">
+                            <div class="card-reduce" style="display:inline-block;" *ngIf="i?.count>0">
+                                <i class="iconfont inner" (click)="reduce(i)" style="font-size:22px;">&#xe689;</i>
+                            </div>
+                            <div class="cart-count" style="font-size:18px;display:inline-block;vertical-align:middle;margin-top:-5px;" *ngIf="i?.count>0">
+                                {{i?.count}}
+                            </div>
+                            <div class="card-add" style="display:inline-block">
+                                <i class="iconfont" (click)="add(i)" style="overflow:hidden;font-size:22px;color:rgb(0, 160, 220);">&#xe601;</i>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

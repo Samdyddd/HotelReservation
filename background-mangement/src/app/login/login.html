@@ -1,0 +1,24 @@
+<div style="background:#f0f0f0;height:100%;position:absolute;width:100%">
+    <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="login()" class="forminfo">
+        <span class="heading">金戈订餐系统管理员登录</span>
+        <div class="form-group">
+            <label class="control-label" require for="userName" class="sr-only">姓名:</label>
+            <div>
+                <input type="text" class="form-control" id="userName" formControlName="userName" placeholder="输入名字" autocomplete="off">
+                <i class="iconfont">&#xe642;</i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" require for="password" class="sr-only">密码:</label>
+            <div>
+                <input type="password" class="form-control" id="password" formControlName="password" placeholder="输入密码" autocomplete="off">
+                <i class="iconfont">&#xe609;</i>
+            </div>
+        </div>
+        <button class="btn btnset center-block" [disabled]="userForm.invalid" [ngClass]="{ 'btn-info':!userForm.invalid}" type="submit">登录</button>
+    </form>
+
+
+
+</div>

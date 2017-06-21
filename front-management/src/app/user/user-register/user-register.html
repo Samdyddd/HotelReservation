@@ -1,0 +1,44 @@
+<div class="container" style="background:#f0f0f0;height:667px;width:100%;position:relative;">
+
+    <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="UserRegister()" class="forminfo">
+        <h2>注册</h2>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" require for="userName" class="sr-only">姓名:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="userName" formControlName="userName" autocomplete="off" placeholder="姓名 长度2个字符以上">
+                <span *ngIf="userForm.controls.userName.valid" class="successinfo"><i class="weui-icon-success-no-circle"></i></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" require for="password" class="sr-only">密码:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" [(ngModel)]="userForm.value.password" id="password" formControlName="password" autocomplete="off" placeholder="密码 长度6个字符以上">
+                <span *ngIf="userForm.controls.password.valid" class="successinfo"><i class="weui-icon-success-no-circle"></i></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" require for="confirmPassword" class="sr-only">确认密码:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="userForm.value.confirmPassword" formControlName="confirmPassword" autocomplete="off" placeholder="确认密码">
+                <span *ngIf="userForm.value.password==userForm.value.confirmPassword&&userForm.value.confirmPassword!=null" class="successinfo"><i class="weui-icon-success-no-circle"></i></span>
+                <!--<span *ngIf="userForm.value.password!=userForm.value.confirmPassword&&userForm.value.confirmPassword!=null" class="successinfo">密码不一致</span>-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" class="sr-only">电话:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" formControlName="mobile" autocomplete="off" placeholder="电话 1-">
+                <span *ngIf="userForm.controls.mobile.valid" class="successinfo "><i class="weui-icon-success-no-circle"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <p> <a [routerLink]=" ['/login'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">登录</a></p>
+        </div>
+
+        <button class="btn center-block" [disabled]="userForm.invalid" [ngClass]="{ 'btn-info':!userForm.invalid}" type="submit">创建</button>
+    </form>
+
+</div>

@@ -1,0 +1,33 @@
+.foods {
+    margin-top: 20px;
+}
+
+.food-list {
+    box-shadow: 0px 1px 6px #BDC0BA;
+    height: 100%;
+    width: 95%;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.food-list-top {
+    background: #f3f5f7;
+    margin-top: 30px;
+    overflow: hidden;
+    height: 35px;
+    border-left: 2px solid rgba(7, 17, 27, 0.1);
+}
+
+.food-list-top .title {
+    padding-left: 14px;
+    line-height: 35px;
+    font-size: 20px;
+    color: rgb(147, 153, 159);
+    display: inline-block;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.food-list:last-child {
+    margin-bottom: 55px;
+}

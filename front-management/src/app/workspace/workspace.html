@@ -1,0 +1,18 @@
+<div>
+    <header-top></header-top>
+    <div class="column">
+        <div class="column-item">
+            <a [routerLink]=" ['./goods'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">商品</a>
+        </div>
+        <!--<div class="column-item">
+            <a [routerLink]=" ['./order'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">订单</a>
+        </div>-->
+        <div class="column-item">
+            <a [routerLink]=" ['./userinfo'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">我的</a>
+        </div>
+    </div>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+
+</div>

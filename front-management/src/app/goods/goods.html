@@ -1,0 +1,33 @@
+<div class="goods" style="position:relative;margin:0 auto;width:100%;height:100%;">
+    <div class="foods">
+        <ul>
+            <li *ngFor="let item of goods" class="food-list">
+                <div class="food-list-top" *ngIf="item.foods!=''||item.foods==null">
+                    <h3 class="title">{{item.typeName}}</h3>
+                    <span class="click" (click)="ondis()" style=" line-height: 35px;display:inline-block;font-size:20px;float:right;margin-right:30px;"> &gt;</span>
+                </div>
+
+                <ul class="ul-list">
+                    <li *ngFor="let food of item.foods" class="food-item" style="height:120px;background:#fff;margin-top:10px;padding:10px;">
+                        <div class="pic" style="display:inline-block;">
+                            <img [src]="food.image" style="margin-left:20px;width:70px;height:75px;border-top-left-radius:8px;border-bottom-left-radius:8px;">
+                        </div>
+                        <div class="content" style="display:inline-block;margin-left:20px;vertical-align:top;">
+                            <h2 class="name" style="font-size:18px;margin:0;padding:0">{{food.name}}</h2>
+                            <p class="info" style=" width:200px;;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">{{food.info}}</p>
+                            <div class="price" style="font-size:18px;">
+                                <span style="display:inline-block;">￥{{food.price}}</span>
+                                <!--<rollcontrol [food]="food" style="padding:0;margin:0;display:inline-block;float:right;margin-right:10px;"></rollcontrol>-->
+                                <span style="display:inline-block;border-radius:3px;border:.5px solid #ddd;" (click)="selectfoods(food)" class="btn center-block">加入购物车</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <shopcart [totalprice]="totalprice"></shopcart>
+
+</div>

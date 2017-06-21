@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.active {
+    border-right: 2px solid #f0f0f0;
+}
+
+li.active {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-right: 5px solid rgb(255, 64, 41);
+}
+
+body,
+html {
+    height: 100%
+}

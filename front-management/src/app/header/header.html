@@ -1,0 +1,43 @@
+<div class="app">
+    <div class="header" *ngFor="let i of headerData">
+        <div class="content-wrapper">
+            <!-- 头部图-->
+            <div class="avatar">
+                <img [src]="i?.image" alt="" style="width: 90px;height: 90px;border-radius:50%">
+            </div>
+            <!--右边内容区-->
+            <div class="content">
+                <div class="title">
+                    <span class="name" style="font-size:20px;color:#ffffff;">{{i?.hotelName}}</span>
+                </div>
+            </div>
+            <!--登录用户-->
+            <div style="position:absolute;right:140px;bottom:14px;vertical-align:top;font-size:18px;color:#ffffff;">
+                <span>欢迎您 </span><span>{{userName}}</span>
+            </div>
+            <!--按钮 *ngIf="seller?.supports" -->
+            <div class="supports-count" style="position:absolute;right:20px;bottom:14px;vertical-align:top;height:24px;width:100px;padding:0 8px;line-height:20px;border-radius:14px;background: rgba(0,0,0,0.2);text-align:center;" (click)="showDetail()">
+                <span class="count" style="font-size:10px;color:#ffffff">酒店订餐详情</span>
+            </div>
+        </div>
+        <!--底边-->
+        <div class="bulletin-wrapper">
+            <span class="bulletin-title"></span>
+            <marquee class="text-roll"><i class="iconfont" style="font-size:20px;">&#xe608;</i>滚动的公告............</marquee>
+            <span class="icon-keyboard_arrow_right"></span>
+        </div>
+        <!--模糊背景-->
+        <div>
+            <img [src]="i.image" style="width:100%;height:120px;position:absolute;top:0;left:0;z-index:-1;filter:blur(10px)">
+        </div>
+
+        <!--弹出内容-->
+        <div class="detail" [@flyLeft] *ngIf="dis">
+            <span style="display:flex;justify-content:center;margin-top:30px;">酒店详情</span>
+            <p style="text-indent:35px;position:relative;margin-top:10px;padding:30px;font-size:18px;">{{i.info}}</p>
+            <div class="detail-close" style="display:flex;justify-content:center;margin-top:150px;">
+                <i class="iconfont" (click)="showDetail()">&#xe686;</i>
+            </div>
+        </div>
+    </div>
+</div>

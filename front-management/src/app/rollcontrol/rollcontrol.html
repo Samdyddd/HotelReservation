@@ -1,0 +1,14 @@
+<div class="rollcontrol">
+    <div class="card-reduce" style="display:inline-block;width:24px;height:24px;" *ngIf="food?.count>0">
+        <i class="iconfont inner" (click)="reduce()" style="font-size:24px;">&#xe689;</i>
+    </div>
+
+    <div class="cart-count" style="font-size:20px;display:inline-block;vertical-align:middle" *ngIf="food?.count>0">
+        {{food?.count}}
+    </div>
+
+    <div class="card-add" style="display:inline-block">
+        <i class="iconfont" (click)="add()" style="overflow:hidden;font-size:24px;color:rgb(0, 160, 220);width:24px;height:24px;">&#xe601;</i>
+    </div>
+
+</div>

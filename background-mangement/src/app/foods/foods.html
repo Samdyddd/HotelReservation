@@ -1,0 +1,122 @@
+<div class="nav_menu">
+    <div style="border-radius:3px;box-shadow: 0px 1px 6px #BDC0BA;padding:20px;">
+        <form role="form" [formGroup]="foodsForm" (ngSubmit)="addFood()" class="form-horizontal" enctype="multipart/form-data">
+            <div class="form-group" style="padding:0;margin:0;display:inline-block;margin-left:30px;">
+                <label for="name">商品名&nbsp;</label>
+                <input type="text" id="name" formControlName="name" [(ngModel)]="foodsForm.value.name">
+            </div>
+
+            <div class="form-group" style="padding:0;margin:0;display:inline-block;margin-left:30px">
+                <label for="price">价格&nbsp;</label>
+                <input type="number" id="price" formControlName="price" [(ngModel)]="foodsForm.value.price">
+            </div>
+
+            <div class="form-group" style="padding:0;margin:0;display:inline-block; margin-left:30px">
+                <label for="imagefile" style="display:inline-block;">图片&nbsp;</label>
+                <input type="file" name="upload" multiple="multiple" id="imagefile" style="display:inline-block;width:200px;">
+                <input type="text" formControlName="image" style="display:none" [value]="imagebase64">
+                <img style="width:40px;height:40px" [src]='imagebase64' *ngIf="imagebase64">
+            </div>
+
+            <div class="form-group" style="display:inline-block;margin-left:20px;">
+                <label for="foodsType" class="control-label" style="display:inline-block;">选择类型:</label>
+                <div style="display:inline-block;">
+                    <select id="foodsType" formControlName="typeName" [(ngModel)]="foodsForm.value.typeName">
+                    <option *ngFor="let ty of category;let i=index" [value]="ty?.name" >{{i+1}}.{{ty.name}}</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-left:30px;">
+                <label for="info" style="vertical-align:top;">详细描述&nbsp;</label>
+                <textarea class="form-control" rows="3" id="info" formControlName="info" style="width:70%;display:inline-block"></textarea>
+            </div>
+            <button type="submit" class="btn center-block" [disabled]="foodsForm.invalid" [ngClass]="{ 'btn-info':!foodsForm.invalid}">提交</button>
+        </form>
+    </div>
+
+    <div class="foodInfo">
+        <ul>
+            <li *ngFor="let item of foodsDate">
+                <div style="width:500px;background: #f3f5f7;margin-top: 30px; height: 35px;border-left: 2px solid rgba(7, 17, 27, 0.1);">
+                    <span style="padding-left: 14px;line-height: 35px;font-size: 20px;color: rgb(147, 153, 159);display: inline-block;">{{item.typeName}}</span>
+                </div>
+
+                <ul>
+                    <li>
+                        <table class="table table-hover table-border">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>菜名</th>
+                                    <th>描述</th>
+                                    <th>价格</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let food of item.foods">
+                                <tr>
+                                    <td> <img [src]="food.image" style="margin-left:20px;width:70px;height:75px;border-top-left-radius:8px;border-bottom-left-radius:8px;">
+                                    </td>
+                                    <td>{{food.name}}</td>
+                                    <td>
+                                        <p style="width:200px;;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">{{food.info}}</p>
+                                    </td>
+                                    <td>￥{{food.price}}</td>
+                                    <td>
+                                        <span class="btn btn-info" (click)="show(food)">修改</span>
+                                        <span (click)="deteltfood(food._id)" class="btn btn-danger">删除</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="dis" style="position:fixed;height:50%;width:600px;background:#BDC0BA;top:100px;padding:30px;right:400px;color:#fff;">
+        <div (click)="showdis()" style="position:absolute;top:0;right:0;width:30px;height:30px;background:rgba(0,0,0,0.7);text-align:center;">
+            <span style="font-size:25px;">X</span>
+        </div>
+        <div>
+            <form class="form-horizontal" enctype="multipart/form-data">
+                <div class="form-group" style="padding:0;margin:0;display:inline-block;margin-left:30px;">
+                    <label for="name">商品名&nbsp;</label>
+                    <input type="text" id="name" name="name" [(ngModel)]=obj.name>
+                </div>
+
+                <div class="form-group" style="padding:0;margin:0;display:inline-block;margin-left:30px">
+                    <label for="price">价格&nbsp;</label>
+                    <input type="number" id="price" name="price" [(ngModel)]=obj.price>
+                </div>
+
+                <div class="form-group" style="padding:0;margin:0;display:inline-block; margin-left:30px;margin-top:20px;">
+                    <label for="imagefile" style="display:inline-block;">图片&nbsp;</label>
+                    <input type="file" name="upload" multiple="multiple" id="imagefile2" style="display:inline-block;width:200px;">
+                    <input type="text" style="display:none" [value]="imagebase64">
+                    <img style="width:50px;height:50px;" name="image" [src]="obj.image" />
+                </div>
+
+                <div class="form-group" style="display:inline-block;margin-left:20px;">
+                    <label for="foodsType" class="control-label" style="display:inline-block;">选择类型:</label>
+                    <div style="display:inline-block;color:#000;">
+                        <select id="foodsType" name="typeName" [(ngModel)]=obj.typeName>
+                            <option *ngFor="let ty of category;let i=index"  [value]="ty?.name">{{i+1}}.{{ty.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-left:30px;margin-top:30px;">
+                    <label for="content" style="vertical-align:top;">详细描述&nbsp;</label>
+                    <textarea class="form-control" rows="3" style="width:70%;display:inline-block" name="info" [(ngModel)]=obj.info></textarea>
+                </div>
+                <button type="submit" class="btn center-block" (click)="updatefood()">修改</button>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>

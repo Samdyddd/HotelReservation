@@ -1,0 +1,38 @@
+<div class="left_col" style="color: #F2F5F7;">
+    <div style="text-align:center;padding-top:20px;">
+        <h5 style="font-size:18px;">金戈订餐后台系统</h5>
+        <div class="user-info">
+            <span>你好,</span>
+            <span>{{userName}}</span>
+        </div>
+    </div>
+
+    <div class="menu-section">
+        <ul class="menu-side">
+            <li class="admin-item" [routerLink]=" ['./order'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a>
+                    <i class='iconfont'>&#xe622;</i>
+                    <span>订单管理</span>
+                </a>
+            </li>
+            <li class="admin-item" [routerLink]=" ['./foods'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a>
+                    <i class='iconfont'>&#xe640;</i>
+                    <span>菜单管理</span>
+                </a>
+            </li>
+            <li class="admin-item" [routerLink]=" ['./evaluate'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a>
+                    <i class='iconfont'>&#xe63c;</i>
+                    <span>评论管理</span>
+                </a>
+            </li>
+            <li class="admin-item" [routerLink]=" ['./sysmonitor'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a>
+                    <i class='iconfont'>&#xe79c;</i>
+                    <span>订单分析</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

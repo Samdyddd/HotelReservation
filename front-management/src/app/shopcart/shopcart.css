@@ -1,0 +1,107 @@
+.shopcart {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    height: 50px;
+}
+
+.shopcart .content {
+    background: #141d27;
+    color: rgba(255, 255, 255, 0.4)
+}
+
+.content .cart-wrapper {
+    top: -13px;
+    margin: 0 12px;
+    padding: 6px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #141d27
+}
+
+.cart-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    text-align: center;
+    background: #2b343c;
+}
+
+.cart-icon .iconfont {
+    font-size: 30px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-top: -2px;
+}
+
+.total {
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    margin-left: 10px;
+    font-size: 17px;
+    z-index: 999;
+}
+
+.content-right {
+    top: 0;
+    right: 0;
+    display: inline-block;
+    position: absolute;
+    width: 105px;
+    height: 100%;
+}
+
+.pay {
+    line-height: 50px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    background: #2b343b;
+    height: 100%
+}
+
+.shopcart-list {
+    z-index: -1;
+    position: absolute;
+    bottom: 50px;
+    background: #fff;
+    width: 100%;
+    transition: all 0.5s;
+}
+
+.shopcart-list .list-head {
+    background: #f3f5f7;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 18px;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+}
+
+.shopcart-list .list-content {
+    padding: 0 18px;
+    max-height: 217px;
+    overflow: hidden;
+    background: #fff
+}
+
+.list-content .list-food {
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc
+}
+
+.activecolor {
+    color: #fff;
+}
+
+.activebgcolor {
+    background: rgb(0, 160, 220)
+}

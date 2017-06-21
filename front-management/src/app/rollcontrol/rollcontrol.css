@@ -1,0 +1,26 @@
+.cart-add,
+.card-reduce {
+    padding: 6px;
+    line-height: 24px;
+    font-size: 30px;
+    color: rgb(0, 160, 220);
+}
+
+.cart-count {
+    display: inline-block;
+    vertical-align: top;
+    width: 12px;
+    padding: 6px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 10px;
+    color: rgb(147, 153, 159);
+}
+
+.card-reduce {
+    transition: all 0.4s linear;
+}
+
+.inner {
+    transform: translate3D(24px, 0, 0)
+}

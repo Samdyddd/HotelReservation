@@ -1,0 +1,60 @@
+<div class="order">
+    <div style="position:relative;border-radius:3px;box-shadow: 0px 1px 6px #BDC0BA;width:90%;margin:0 auto;margin-top:15px;padding-top:10px;">
+        <ul>
+            <li>
+                <div style="margin:0 20px;">
+                    <span>就餐地点:{{orderInfo?.place}}</span>
+                    <span style="color: rgb(147, 153, 159);display: inline-block;margin-left:20px;">预定时间{{orderInfo?.ordertime|date:"y年MM月dd日HH时mm分"}}</span>
+                </div>
+                <div style="margin:0 20px;">
+                    <ul>
+                        <li class="list-food" style="border-bottom:1px solid #ccc" *ngFor="let item of orderInfo?.goods">
+                            <div style="display:flex;">
+                                <span style="width:40%;">{{item?.name}}</span>
+                                <span style="flex:1;text-align:center;">x{{item?.count}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <span>总额:￥{{orderInfo?.totalPrice}}</span>
+                </div>
+                <button class="btn center-block" *ngIf="orderstatus==0">未接单</button>
+                <button class="btn center-block btn-info" *ngIf="orderstatus==1">已接单</button>
+                <span class="ev" *ngIf="orderstatus==1" (click)="show()">评论</span>
+                <!--<span class="ev" *ngIf="">已评论</span>-->
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="pl" style="margin-top:-5px;padding-top:0;position:relative" *ngIf="dis">
+
+        <div style="box-shadow: 0px 1px 6px #BDC0BA;width:90%;margin:0 auto;padding:10px;padding-left:20px;">
+            <form id="reviewid">
+                <div>
+                    <span>菜品评论</span>
+                    <input type="radio" [(ngModel)]="foodreview.foodreviews" name="foodlist" value="0">差劲
+                    <input type="radio" [(ngModel)]="foodreview.foodreviews" name="foodlist" value="1">一般
+                    <input type="radio" [(ngModel)]="foodreview.foodreviews" name="foodlist" value="2">很好
+                </div>
+                <div>
+                    <span>服务评论</span>
+                    <label>
+                    <input type="radio" [(ngModel)]="servicereview.servicereviews" name="servicelist" value="0">差劲
+                    <input type="radio" [(ngModel)]="servicereview.servicereviews" name="servicelist" value="1">一般
+                    <input type="radio" [(ngModel)]="servicereview.servicereviews" name="servicelist" value="2">很好
+                </label>
+                </div>
+                <div class="content">
+                    <span style="vertical-align:top">建议</span>
+                    <textarea id="content"></textarea>
+                </div>
+                <div class="text-right" style="position:relative;right:6%;top:-40px;">
+                    <button class="btn btn-info" (click)="addev()" *ngIf="evdis">评论</button>
+                    <button class="btn btn-default" *ngIf="!evdis">已评论</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
